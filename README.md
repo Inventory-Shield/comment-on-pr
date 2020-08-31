@@ -2,6 +2,20 @@
 
 A GitHub action to add a comment on pull requests.
 
+## To Use
+
+1. Add a `uses` line to your GitHub workflow:
+2. Pass a GitHub account's personal access token to the GITHUB_TOKEN environment variable.
+3. Specify the path to a Markdown file to format the
+
+```yml
+- uses: Inventory-Shield/comment-on-pr@master
+  env:
+    GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
+  with:
+    filename: template.md
+```
+
 ## Usage Example
 
 [`.github/workflows/example.yml`](.github/workflows/example.yml)
@@ -17,7 +31,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: harupy/comment-on-pr@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CI_TOKEN }}
         with:
           filename: template.md
 ```
